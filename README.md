@@ -40,6 +40,10 @@
 
 Установка GNU EMACS и пакета его дополнений.
 
+### Firefox
+
+Установка Firefox из репозитория Mozilla. Повторение шагов, описанных в официальной [инструкции][firefox].
+
 ### Mattermost
 
 Установка клиента рабочего стола для мессенджера [Mattermost][mattermost].
@@ -70,7 +74,7 @@
 
 ### VirtualBox
 
-Установка [Oracle VirtualBox][virtualbox]. **В настоящее время дистрибутива для Debian Bookworm не существует**.
+Установка [Oracle VirtualBox][virtualbox].
 
 ### Yandex Browser
 
@@ -78,6 +82,7 @@
 
 [ansible]: https://ansible.com/
 [debian]: https://debian.org/
+[firefox]: https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
 [mattermost]: https://mattermost.com/
 [nodejs]: https://nodejs.org/
 [ruby]: https://ruby-lang.org/
