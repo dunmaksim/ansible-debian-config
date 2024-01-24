@@ -1,0 +1,46 @@
+---
+- name: Install Mozilla Firefox from Mozilla APT repository
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install GPG key
+      ansible.builtin.apt_key:
+        url: https://packages.mozilla.org/apt/repo-signing-key.gpg
+        keyring: /etc/apt/trusted.gpg.d/packages.mozilla.org
+        state: present
+
+    - name: Register Mozilla APT repository
+      ansible.builtin.apt_repository:
+        repo: deb https://packages.mozilla.org/apt mozilla main
+        state: present
+        filename: mozilla
+        update_cache: false
+
+    - name: Create Mozilla repository priority file
+      ansible.builtin.file:
+        path: /etc/apt/preferences.d/mozilla
+        owner: root
+        group: root
+        state: file
+        mode: '0644'
+
+    - name: Fill Mozilla repository priority file
+      ansible.builtin.blockinfile:
+        paht: /etc/apt/preferences.d/mozilla
+        block: |
+          Package: *
+          Pin: origin packages.mozilla.org
+          Pin-Priority: 1000
+
+    - name: Uninstall Mozilla Firefox ESR
+      ansible.builtin.apt:
+       name: firefox-esr
+       state: absent
+       purge: true
+
+    - name: Install Mozilla Firefox from Mozilla repository
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+          - firefox

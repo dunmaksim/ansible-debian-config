@@ -1,14 +1,22 @@
 CC=ansible-lint
+YL=yamllint
 
 .PHONY : tests
 
 tests:
-	$(CC) playbook/docker.yml
-	$(CC) playbook/emacs.yml
-	$(CC) playbook/mattermost.yml
-	$(CC) playbook/nodejs.yml
-	$(CC) playbook/qemu-kvm.yml
-	$(CC) playbook/ruby.yml
-	$(CC) playbook/thunderbird.yml
-	$(CC) plyabook/virtualbox.yml
-	$(CC) playbook/yandex-browser.yml
+	$(CC) playbooks/debian-multimedia.yml
+	$(CC) playbooks/docker.yml
+	$(CC) playbooks/emacs.yml
+	$(CC) playbooks/mattermost.yml
+	$(CC) playbooks/nodejs.yml
+	$(CC) playbooks/qemu-kvm.yml
+	$(CC) playbooks/ruby.yml
+	$(CC) playbooks/syslog-ng.yml
+	$(CC) playbooks/terraform.yml
+	$(CC) playbooks/thunderbird.yml
+	$(CC) plyabooks/virtualbox.yml
+	$(CC) playbooks/yandex-browser.yml
+
+	$(YL) playbooks/*.yml
+	$(YL) inventory.yml
+
