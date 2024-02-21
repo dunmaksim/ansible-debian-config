@@ -1,0 +1,19 @@
+---
+- name: Add PostgreSQL repository
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install GPG key
+      ansible.builtin.apt_key:
+        url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+        keyring: /etc/apt/trusted.gpg.d/postgresql.gpg
+        state: present
+
+    - name: Register PostgreSQL APT repository
+      ansible.builtin.apt_repository:
+        repo: deb https://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main
+        state: present
+        filename: pgdg # /etc/apt/sources.list.d/pgdg.list
+        update_cache: true

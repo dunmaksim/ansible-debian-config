@@ -36,13 +36,13 @@
 
 Установка Docker и необходимых для него пакетов из репозиториев разработчика, а не из репозиториев Debian Linux.
 
-### EMACS
+### Emacs
 
-Установка GNU EMACS и пакета его дополнений.
+Установка GNU Emacs и пакета его дополнений.
 
 ### Firefox
 
-Установка Firefox из репозитория Mozilla. Повторение шагов, описанных в официальной [инструкции][firefox].
+Установка Firefox из репозитория Mozilla. Повторение шагов, описанных в официальной [инструкции](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions).
 
 ### Mattermost
 
@@ -50,7 +50,13 @@
 
 ### NodeJS
 
-Установка [NodeJS][nodejs] LTS. В настоящее время это 20.x.
+Установка [NodeJS](https://nodejs.org/) LTS. В настоящее время это 20.x.
+
+### PostgreSQL
+
+Подключение официального репозитория PostgreSQL.
+
+**Этот плейбук не устанавливает и не настраивает саму СУБД!**
 
 ### QEMU-KVM
 
@@ -82,9 +88,7 @@
 
 [ansible]: https://ansible.com/
 [debian]: https://debian.org/
-[firefox]: https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions
 [mattermost]: https://mattermost.com/
-[nodejs]: https://nodejs.org/
 [ruby]: https://ruby-lang.org/
 [syslog-ng]: https://www.syslog-ng.com/
 [terraform]: https://developer.hashicorp.com/terraform

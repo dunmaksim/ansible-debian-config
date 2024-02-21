@@ -5,7 +5,7 @@
   gather_facts: true
 
   tasks:
-    - name: Remove docker packages installed from Debian repositories
+    - name: Remove Docker packages installed from Debian repositories
       ansible.builtin.apt:
         name: "{{ item }}"
         state: absent
