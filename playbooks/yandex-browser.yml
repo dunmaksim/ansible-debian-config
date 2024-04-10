@@ -8,7 +8,7 @@
     - name: Install GPG key
       ansible.builtin.apt_key:
         url: https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG
-        keyring: /etc/apt/trusted.gpg.d/virtualbox-2016.gpg
+        keyring: /etc/apt/trusted.gpg.d/yandex-browser-key.gpg
         state: present
 
     - name: Register Yandex Browser APT repository
