@@ -2,7 +2,6 @@
 - name: Install HashiCorp Terraform
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Install GPG key
@@ -15,8 +14,8 @@
       ansible.builtin.apt_repository:
         repo: deb https://apt.releases.hashicorp.com/ {{ ansible_distribution_release }} main
         state: present
-        filename: hashicorp # /etc/apt/sources.list.d/hashicorp.list
-        update_cache: true # apt update
+        filename: hashicorp  # /etc/apt/sources.list.d/hashicorp.list
+        update_cache: true  # apt update
 
     - name: Install Terraform package
       ansible.builtin.apt:

@@ -3,7 +3,6 @@
 - name: Connect Debian Multimedia repository
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Download and install package with GPG key
@@ -14,5 +13,5 @@
       ansible.builtin.apt_repository:
         repo: deb https://www.deb-multimedia.org {{ ansible_distribution_release }} main non-free
         state: present
-        filename: debian-multimedia # /etc/apt/sources.list.d/debian-miltimedia.list
+        filename: debian-multimedia  # /etc/apt/sources.list.d/debian-miltimedia.list
         update_cache: true

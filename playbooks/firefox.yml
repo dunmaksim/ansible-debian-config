@@ -35,9 +35,9 @@
 
     - name: Uninstall Mozilla Firefox ESR
       ansible.builtin.apt:
-       name: firefox-esr
-       state: absent
-       purge: true
+        name: firefox-esr
+        state: absent
+        purge: true
 
     - name: Install Mozilla Firefox from Mozilla repository
       ansible.builtin.apt:

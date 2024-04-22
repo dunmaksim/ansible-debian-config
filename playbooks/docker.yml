@@ -2,7 +2,6 @@
 - name: Install Docker
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Remove Docker packages installed from Debian repositories
@@ -27,7 +26,7 @@
       ansible.builtin.apt_repository:
         repo: deb https://download.docker.com/linux debian {{ ansible_distribution_release }} stable
         state: present
-        filename: docker # /etc/apt/sources.list.d/docker.list
+        filename: docker  # /etc/apt/sources.list.d/docker.list
         update_cache: true
 
     - name: Install Docker packages

@@ -2,7 +2,6 @@
 - name: Install GNU Eemacs with extensions
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Search and uninstall Emacs Nox

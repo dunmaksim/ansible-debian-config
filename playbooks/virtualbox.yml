@@ -2,7 +2,6 @@
 - name: Install Oracle VirtualBox
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Install GPG key
@@ -15,7 +14,7 @@
       ansible.builtin.apt_repository:
         repo: deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib
         state: present
-        filename: virtualbox# /etc/apt/sources.list.d/virtualbox.list
+        filename: virtualbox  # /etc/apt/sources.list.d/virtualbox.list
         update_cache: true  # apt update
 
     - name: Install required packages

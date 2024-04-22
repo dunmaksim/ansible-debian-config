@@ -5,7 +5,6 @@
   become: true
 
   tasks:
-
     - name: Install QEMU-KVM packages
       ansible.builtin.apt:
         update_cache: true
@@ -13,9 +12,8 @@
           - qemu-kvm
           - libvirt-clients
           - libvirt-daemon-system
-          - libvirt-dev # Для сборки нативного GEM'а Ruby
+          - libvirt-dev  # Для сборки нативного GEM'а Ruby
           - virt-manager
 
     - name: Turn on autostart `default` network
       ansible.builtin.command: virsh net-autostart --network default
-      become: true

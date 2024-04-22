@@ -2,7 +2,6 @@
 - name: Install Node.JS 20.x
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Install GPG key
@@ -15,8 +14,8 @@
       ansible.builtin.apt_repository:
         repo: deb https://deb.nodesource.com/node_20.x nodistro main
         state: present
-        filename: nodejs # /etc/apt/sources.list.d/nodesource.list
-        update_cache: true # apt update
+        filename: nodejs  # /etc/apt/sources.list.d/nodesource.list
+        update_cache: true  # apt update
 
     - name: Install NodeJS package
       ansible.builtin.apt:

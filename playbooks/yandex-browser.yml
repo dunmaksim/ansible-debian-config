@@ -2,7 +2,6 @@
 - name: Install Yandex Browser
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Install GPG key
@@ -15,7 +14,7 @@
       ansible.builtin.apt_repository:
         repo: deb https://repo.yandex.ru/yandex-browser/deb stable main
         state: present
-        filename: yandex-browser # /etc/apt/sources.list.d/yandex-browser.list
+        filename: yandex-browser  # /etc/apt/sources.list.d/yandex-browser.list
         update_cache: true  # apt update
 
     - name: Install Yandex Browser package

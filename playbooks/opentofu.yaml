@@ -1,0 +1,29 @@
+---
+- name: Install OpenTofu
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install base OpenTofu GPG key
+      ansible.builtin.apt_key:
+        url: https://get.opentofu.org/opentofu.gpg
+        keyring: /etc/apt/trusted.gpg.d/opentofu.gpg
+        state: present
+
+    - name: Install OpenTofu repository GPG key
+      ansible.builtin.apt_key:
+        url: https://packages.opentofu.org/opentofu/tofu/gpgkey
+        keyring: /etc/apt/trusted.gpg.d/opentofu-repo.gpg
+        state: present
+
+    - name: Register OpenTofu APT repository
+      ansible.builtin.apt_repository:
+        repo: deb https://packages.opentofu.org/opentofu/tofu/any/ any main
+        state: present
+        filename: opentofu  # /etc/apt/sources.list.d/pgdg.list
+        update_cache: true
+
+    - name: Install OpenTofu
+      ansible.builtin.apt:
+        name: tofu
+        state: present

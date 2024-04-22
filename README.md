@@ -52,6 +52,10 @@
 
 Установка [NodeJS](https://nodejs.org/) LTS. В настоящее время это 20.x.
 
+### OpenTofu
+
+Установка [OpenTofu](https://opentofu.org) — открытого аналога Hashicorp Terraform.
+
 ### PostgreSQL
 
 Подключение официального репозитория PostgreSQL.

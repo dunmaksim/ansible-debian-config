@@ -2,7 +2,6 @@
 - name: Install Mattermost desktop client
   hosts: all
   become: true
-  gather_facts: true
 
   tasks:
     - name: Install GPG key
@@ -15,7 +14,7 @@
       ansible.builtin.apt_repository:
         repo: deb https://deb.packages.mattermost.com stable main
         state: present
-        filename: mattermost # /etc/apt/sources.list.d/mattermost.list
+        filename: mattermost  # /etc/apt/sources.list.d/mattermost.list
         update_cache: true  # apt update
 
     - name: Install Mattermost Desktop package
