@@ -4,20 +4,17 @@
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://deb.packages.mattermost.com/pubkey.gpg
-        keyring: /etc/apt/trusted.gpg.d/mattermost.gpg
-        state: present
-
     - name: Register Mattermost APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://deb.packages.mattermost.com stable main
-        state: present
-        filename: mattermost  # /etc/apt/sources.list.d/mattermost.list
-        update_cache: true  # apt update
+      ansible.builtin.deb822_repository:
+        name: mattermost
+        types: deb
+        uris: https://deb.packages.mattermost.com
+        suites: stable
+        components: main
+        signed_by: https://deb.packages.mattermost.com/pubkey.gpg
 
     - name: Install Mattermost Desktop package
       ansible.builtin.apt:
         name: mattermost-desktop
         state: present
+        update_cache: true
