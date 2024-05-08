@@ -4,18 +4,15 @@
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://packages.mozilla.org/apt/repo-signing-key.gpg
-        keyring: /etc/apt/trusted.gpg.d/packages.mozilla.org
-        state: present
-
     - name: Register Mozilla APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://packages.mozilla.org/apt mozilla main
+      ansible.builtin.deb822_repository:
+        name: mozilla
+        types: deb
+        uris: https://packages.mozilla.org/apt
+        suites: mozilla
+        components: main
+        signed_by: https://packages.mozilla.org/apt/repo-signing-key.gpg
         state: present
-        filename: mozilla
-        update_cache: false
 
     - name: Create Mozilla repository priority file
       ansible.builtin.file:
@@ -27,7 +24,7 @@
 
     - name: Fill Mozilla repository priority file
       ansible.builtin.blockinfile:
-        paht: /etc/apt/preferences.d/mozilla
+        path: /etc/apt/preferences.d/mozilla
         block: |
           Package: *
           Pin: origin packages.mozilla.org

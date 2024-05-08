@@ -12,6 +12,7 @@
         suites: stable
         components: main
         signed_by: https://deb.packages.mattermost.com/pubkey.gpg
+        state: present
 
     - name: Install Mattermost Desktop package
       ansible.builtin.apt:

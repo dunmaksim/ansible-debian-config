@@ -4,27 +4,22 @@
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
-        keyring: /etc/apt/trusted.gpg.d/virtualbox-2016.gpg
-        state: present
-
     - name: Register Oracle VirtualBox APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://download.virtualbox.org/virtualbox/debian {{ ansible_distribution_release }} contrib
+      ansible.builtin.deb822_repository:
+        name: virtualbox
+        types: deb
+        uris: https://download.virtualbox.org/virtualbox/debian
+        suites: "{{ ansible_distribution_release }}"
+        components: contrib
+        signed_by: https://www.virtualbox.org/download/oracle_vbox_2016.asc
         state: present
-        filename: virtualbox  # /etc/apt/sources.list.d/virtualbox.list
-        update_cache: true  # apt update
 
     - name: Install required packages
       ansible.builtin.apt:
+        update_cache: true
+        state: present
         pkg:
           - dkms
           - build-essential
-          - linux-headers-"{{ ansible_kernel }}"
-
-    - name: Install VirtualBox 7 packages
-      ansible.builtin.apt:
-        name: virtualbox-7.0
-        state: present
+          - "linux-headers-{{ ansible_kernel }}"
+          - virtualbox-7.0
