@@ -4,20 +4,18 @@
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://apt.releases.hashicorp.com/gpg
-        keyring: /etc/apt/trusted.gpg.d/hashicorp-archive-keyring.gpg
-        state: present
-
     - name: Register HashiCorp APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://apt.releases.hashicorp.com/ {{ ansible_distribution_release }} main
+      ansible.builtin.deb822_repository:
+        name: hashicorp
+        types: deb
+        uris: https://apt.releases.hashicorp.com/
+        suites: "{{ ansible_distribution_release }}"
+        components: main
+        signed_by: https://apt.releases.hashicorp.com/gpg
         state: present
-        filename: hashicorp  # /etc/apt/sources.list.d/hashicorp.list
-        update_cache: true  # apt update
 
     - name: Install Terraform package
       ansible.builtin.apt:
         name: terraform
         state: present
+        update_cache: true

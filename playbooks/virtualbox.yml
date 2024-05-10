@@ -16,10 +16,10 @@
 
     - name: Install required packages
       ansible.builtin.apt:
-        update_cache: true
         state: present
         pkg:
           - dkms
           - build-essential
           - "linux-headers-{{ ansible_kernel }}"
           - virtualbox-7.0
+        update_cache: true

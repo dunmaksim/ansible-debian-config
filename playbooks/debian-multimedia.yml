@@ -7,11 +7,17 @@
   tasks:
     - name: Download and install package with GPG key
       ansible.builtin.apt:
-        deb: https://www.deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
+        deb: |
+          https://www.deb-multimedia.org/pool/main/d/
+          deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
 
     - name: Register Debian Multimedia repository
-      ansible.builtin.apt_repository:
-        repo: deb https://www.deb-multimedia.org {{ ansible_distribution_release }} main non-free
+      ansible.builtin.deb822_repository:
+        name: debian-multimedia
+        types: deb
+        uris: https://www.deb-multimedia.org
+        suites: "{{ ansible_distribution_release }}"
+        components:
+          - main
+          - non-free
         state: present
-        filename: debian-multimedia  # /etc/apt/sources.list.d/debian-miltimedia.list
-        update_cache: true

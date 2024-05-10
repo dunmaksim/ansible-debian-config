@@ -8,20 +8,18 @@
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://ose-repo.syslog-ng.com/apt/syslog-ng-ose-pub.asc
-        keyring: /etc/apt/trusted.gpg.d/syslog-ng.gpg
+    - name: Register syslog-ng APT repository
+      ansible.builtin.deb822_repository:
+        name: syslog-ng
+        types: deb
+        uris: https://ose-repo.syslog-ng.com/apt/
+        suites: stable
+        components: "debian-{{ ansible_distribution_release }}"
+        signed_by: https://ose-repo.syslog-ng.com/apt/syslog-ng-ose-pub.asc
         state: present
-
-    - name: Register syslog-ng repository
-      ansible.builtin.apt_repository:
-        repo: deb https://ose-repo.syslog-ng.com/apt/ stable debian-{{ ansible_distribution_release }}
-        state: present
-        filename: syslog-ng  # /etc/apt/sources.list.d/syslog-ng.list
-        update_cache: true  # apt update
 
     - name: Install syslog-ng package
       ansible.builtin.apt:
         name: syslog-ng
         state: present
+        update_cache: true

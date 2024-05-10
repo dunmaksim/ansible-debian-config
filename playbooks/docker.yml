@@ -16,18 +16,15 @@
         - docker.io
         - runc
 
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://download.docker.com/linux/debian/gpg
-        keyring: /etc/apt/trusted.gpg.d/docker.gpg
-        state: present
-
     - name: Register Docker APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://download.docker.com/linux debian {{ ansible_distribution_release }} stable
+      ansible.builtin.deb822_repository:
+        name: docker
+        types: deb
+        uris: https://download.docker.com/linux
+        suites: "debian {{ ansible_distribution_release }}"
+        components: stable
+        signed_by: https://download.docker.com/linux/debian/gpg
         state: present
-        filename: docker  # /etc/apt/sources.list.d/docker.list
-        update_cache: true
 
     - name: Install Docker packages
       ansible.builtin.apt:
@@ -37,3 +34,4 @@
           docker-ce
           docker-ce-cli
           docker-compose-plugin
+        update_cache: true

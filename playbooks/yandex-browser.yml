@@ -4,20 +4,18 @@
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG
-        keyring: /etc/apt/trusted.gpg.d/yandex-browser-key.gpg
-        state: present
-
     - name: Register Yandex Browser APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://repo.yandex.ru/yandex-browser/deb stable main
+      ansible.builtin.deb822_repository:
+        name: yandex-browser
+        types: deb
+        uris: https://repo.yandex.ru/yandex-browser/deb
+        suites: stable
+        components: main
+        signed_by: https://repo.yandex.ru/yandex-browser/YANDEX-BROWSER-KEY.GPG
         state: present
-        filename: yandex-browser  # /etc/apt/sources.list.d/yandex-browser.list
-        update_cache: true  # apt update
 
     - name: Install Yandex Browser package
       ansible.builtin.apt:
         name: yandex-browser
         state: present
+        update_cache: true

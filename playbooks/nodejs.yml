@@ -1,23 +1,21 @@
 ---
-- name: Install Node.JS 20.x
+- name: Install Node.JS 20.x from NodeSource
   hosts: all
   become: true
 
   tasks:
-    - name: Install GPG key
-      ansible.builtin.apt_key:
-        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-        keyring: /etc/apt/trusted.gpg.d/nodesource.gpg
+    - name: Register NodeJS APT repository
+      ansible.builtin.deb822_repository:
+        name: nodejs
+        types: deb
+        uris: https://deb.nodesource.com/node_20.x
+        suites: nodistro
+        components: main
+        signed_by: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
         state: present
-
-    - name: Register Node.JS APT repository
-      ansible.builtin.apt_repository:
-        repo: deb https://deb.nodesource.com/node_20.x nodistro main
-        state: present
-        filename: nodejs  # /etc/apt/sources.list.d/nodesource.list
-        update_cache: true  # apt update
 
     - name: Install NodeJS package
       ansible.builtin.apt:
         name: nodejs
         state: present
+        update_cache: true
