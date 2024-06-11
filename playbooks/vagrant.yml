@@ -1,0 +1,14 @@
+---
+- name: Install HashiCorp Vagrant from mirror
+  hosts: all
+  become: true
+  vars:
+    version: 2.4.1
+
+  tasks:
+    - name: Install Terraform DEB package
+      ansible.builtin.apt:
+        deb: >-
+          https://hashicorp-releases.yandexcloud.net/vagrant/
+          {{ version }}/vagrant_{{ version }}-1_{{ ansible_architecture }}.deb
+        state: present
