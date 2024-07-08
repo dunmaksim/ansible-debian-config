@@ -1,5 +1,10 @@
 # Список изменений
 
+## 2024-07-08
+
+1. Добавлен плейбук установки Visual Studio Code.
+1. Небольшие исправления в плейбуке для NodeJS.
+
 ## 2024-05-10
 
 1. Плейбуки, работающие с APT-файлами, переведены на использование модуля [ansible.builtin.deb822_repository](https://docs.ansible.com/ansible/latest/collections/ansible/builtin/deb822_repository_module.html).

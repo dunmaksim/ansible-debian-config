@@ -86,6 +86,10 @@
 
 Установка [Oracle VirtualBox][virtualbox].
 
+### VSCode
+
+Установка [Visual Studio Code]().
+
 ### Yandex Browser
 
 Установка стабильной версии [Yandex Browser][yandex-browser].
