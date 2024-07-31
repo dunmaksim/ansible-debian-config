@@ -1,8 +1,8 @@
 # Ansible Debian Config
 
-Настройка Debian с помощью [Ansible][ansible].
+Настройка Debian с помощью [Ansible](https://www.ansible.com/).
 
-Размещённые в этом репозитории плейбуки предназначены для быстрой установки и настройки нужного ПО в [Debian Linux][debian]. В настоящее время речь идёт о релизе BullsEye. В дальнейшем планируется создание отдельных веток, соответствующих релизам дистрибутива.
+Размещённые в этом репозитории плейбуки предназначены для быстрой установки и настройки нужного ПО в [Debian Linux](https://debian.org/). В настоящее время речь идёт о релизе Bookworm. В дальнейшем планируется создание отдельных веток, соответствующих релизам дистрибутива.
 
 В файле инвентаря сейчас присутствует запись только для локального компьютера.
 
@@ -30,75 +30,84 @@
 
 1. Дождитесь завершения работы плейбука.
 
-## Playbook
+## Список плейбуков
 
-### Docker
+* [bookworm-backports.yml](./playbooks/bookworm-backports.yml)
 
-Установка Docker и необходимых для него пакетов из репозиториев разработчика, а не из репозиториев Debian Linux.
+    Подключение репозитория с бэкпортами Debian Bookworm.
 
-### Emacs
+* [debian-multimedia.yml](./playbooks/debian-miltimedia.yml)
 
-Установка GNU Emacs и пакета его дополнений.
+    Подключение репозитория Debian Multimedia.
 
-### Firefox
+* [docker.yml](./playbooks/docker.yml)
 
-Установка Firefox из репозитория Mozilla. Повторение шагов, описанных в официальной [инструкции](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions).
+    Установка Docker и необходимых для него пакетов из репозиториев разработчика, а не из репозиториев Debian Linux.
 
-### Mattermost
+* [emacs.yml](./playbooks/emacs.yml)
 
-Установка клиента рабочего стола для мессенджера [Mattermost][mattermost].
+    Установка GNU Emacs и дополнительных пакетов для него.
 
-### NodeJS
+* [firefox.yml](./playbooks/firefox.yml)
 
-Установка [NodeJS](https://nodejs.org/) LTS. В настоящее время это 20.x.
+    Установка Firefox из репозитория Mozilla. Повторение шагов, описанных в официальной [инструкции](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions).
 
-### OpenTofu
+* [hashicorp-repo.yml](./playbooks/hashicorp-repo.yml)
 
-Установка [OpenTofu](https://opentofu.org) — открытого аналога Hashicorp Terraform.
+    Подключение репозитория HashiCorp. В условиях санкций — бесполезно.
 
-### PostgreSQL
+* [mattermost.yml](./playbooks/mattermost.yml)
 
-Подключение официального репозитория PostgreSQL.
+    Установка клиента рабочего стола для мессенджера [Mattermost](https://mattermost.com/).
 
-**Этот плейбук не устанавливает и не настраивает саму СУБД!**
+* [nodejs.yml](./playbooks/nodejs.yml)
 
-### QEMU-KVM
+    Установка [NodeJS](https://nodejs.org/) LTS. В настоящее время это 20.x.
 
-Установка системы виртуализации QEMU-KVM. Плейбук основан на статье из Debian Wiki.
+* [opentofu.yml](./playbooks/opentofu.yml)
 
-### Ruby
+    Установка [OpenTofu](https://opentofu.org) — открытого аналога HashiCorp Terraform.
 
-Установка [Ruby][ruby] и пакетов, необходимых для нативной сборки расширений.
+* [postgresql.yml](./playbooks/postgresql.yml)
 
-### Syslog-ng
+    Подключение официального репозитория PostgreSQL.
 
-Установка системы логирования [syslog-ng][syslog-ng] из официального репозитория.
+* [qemu-kvm.yml](./playbooks/qemu-kvm.yml)
 
-### Terraform
+    Установка системы виртуализации QEMU-KVM. Плейбук основан на статье из Debian Wiki.
 
-Установка [HashiCorp Terraform][terraform]. Может не работать из-за введенных против России санкционных ограничений.
+* [ruby.yml](./playbooks/ruby.yml)
 
-### Thunderbird
+    Установка [Ruby](https://ruby-lang.org/) и пакетов, необходимых для нативной сборки расширений.
 
-Установка почтового клиента Mozilla Thunderbird.
+* [syslog-ng.yml](./playbooks/syslog-ng.yml)
 
-### VirtualBox
+    Установка системы логирования [syslog-ng](https://syslog-ng.github.io/) из официального репозитория.
 
-Установка [Oracle VirtualBox][virtualbox].
+    **Этот плейбук не проходил проверки!**
 
-### VSCode
+* [terraform.yml](./playbooks/terraform.yml)
 
-Установка [Visual Studio Code]().
+    Установка [HashiCorp Terraform](https://developer.hashicorp.com/terraform). Может не работать из-за введенных против России санкционных ограничений. Лучше использовать OpenTofu.
 
-### Yandex Browser
+* [thunderbird.yml](./playbooks/thunderbird.yml)
 
-Установка стабильной версии [Yandex Browser][yandex-browser].
+    Установка почтового клиента Mozilla Thunderbird.
 
-[ansible]: https://ansible.com/
-[debian]: https://debian.org/
-[mattermost]: https://mattermost.com/
-[ruby]: https://ruby-lang.org/
-[syslog-ng]: https://www.syslog-ng.com/
-[terraform]: https://developer.hashicorp.com/terraform
-[virtualbox]: https://virtualbox.org/
-[yandex-browser]: https://browser.yandex.ru/
+* [vagrant.yml](./playbooks/vagrant.yml)
+
+    Установка Vagrant из репозиториев Debian Bookworm.
+
+* [virtualbox.yml](./playbooks/virtualbox.yml)
+
+    Установка [Oracle VirtualBox](https://virtualbox.org).
+
+    Создать MOK, установить его в UEFI и подписать им модули ядра придётся вручную. Подробнее см. в Debian Wiki: [SecureBoot](https://wiki.debian.org/SecureBoot).
+
+* [vscode.yml](./playbooks/vscode.yml)
+
+    Установка [Visual Studio Code](https://code.visualstudio.com/) из официального репозитория.
+
+* [yandex-browser.yml](./playbooks/yandex-browser.yml)
+
+    Установка стабильной версии [Yandex Browser](https://browser.yandex.ru) из официального репозитория.
