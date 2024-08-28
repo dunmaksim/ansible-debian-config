@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  role_name: "dunaevskii.debian.backports"
+  company: Maxim Dunaevskii
+  author: Maxim Dunaevskii
+  description: Role for setup Debian Backports repository
+  min_ansible_versions: 2.10.0
+  platforms:
+    - name: Debian
+      versions:
+        - bookworm
+dependencies: []

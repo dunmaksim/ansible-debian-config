@@ -1,0 +1,131 @@
+---
+- name: Register Backports Repository
+  ansible.builtin.deb822_repository:
+    name: debian-backports
+    types: deb
+    uris: https://deb.debian.org/debian
+    suites: bookworm-backports
+    components:
+      - main
+      - non-free
+      - contrib
+    state: present
+
+
+# cURL
+- name: Create priorities file for cURL
+  ansible.builtin.file:
+    path: /etc/apt/preferences.d/backports-curl
+    owner: root
+    group: root
+    state: file
+    mode: '0644'
+  when:
+    - curl == true
+
+- name: Fill priorities file for cURL
+  ansible.builtin.blockinfile:
+    path: /etc/apt/preferences.d/backports-curl
+    block: |
+      # cURL
+      Package: curl libcurl3-gnutls libcurl4
+      Pin: release n=bookworm-backports
+      Pin-Priority: 600
+  when:
+    - curl == true
+
+
+# GNU Emacs
+- name: Create priorities file for GNU Emacs
+  ansible.builtin.file:
+    path: /etc/apt/preferences.d/backports-emacs
+    owner: root
+    group: root
+    state: file
+    mode: '0644'
+  when:
+    - emacs == true
+
+- name: Fill priorities file for GNU Emacs
+  ansible.builtin.blockinfile:
+    path: /etc/apt/preferences.d/backports-emacs
+    block: |
+      # GNU Emacs
+      Package: emacs-gtk emacs-nox emacs emacs-bin-common emacs-common emacs-el
+      Pin: release n=bookworm-backports
+      Pin-Priority: 600
+  when:
+    - emacs == true
+
+
+# gThumb
+- name: Create priorities file for gThumb
+  ansible.builtin.file:
+    path: /etc/apt/preferences.d/backports-gthumb
+    owner: root
+    group: root
+    state: file
+    mode: '0644'
+  when:
+    - gthumb == true
+
+- name: Fill priorities file for gThumb
+  ansible.builtin.blockinfile:
+    path: /etc/apt/preferences.d/backports-gthumb
+    block: |
+      # gThumb
+      Package: gthumb gthumb-data
+      Pin: release n=bookworm-backports
+      Pin-Priority: 600
+  when:
+    - gthumb == true
+
+
+# Midnight Commander
+- name: Create priorities file for Midnight Commander
+  ansible.builtin.file:
+    path: /etc/apt/preferences.d/backports-mc
+    owner: root
+    group: root
+    state: file
+    mode: '0644'
+  when:
+    - mc == true
+
+- name: Fill priorities file for Midnight Commander
+  ansible.builtin.blockinfile:
+    path: /etc/apt/preferences.d/backports-mc
+    block: |
+      # Midnight Commander
+      Package: mc mc-data
+      Pin: release n=bookworm-backports
+      Pin-Priority: 600
+  when:
+    - mc == true
+
+
+# Pipewire
+- name: Create priorities file for Pipewire
+  ansible.builtin.file:
+    path: /etc/apt/preferences.d/backports-pipewire
+    owner: root
+    group: root
+    state: file
+    mode: '0644'
+  when:
+    - pipewire == true
+
+- name: Fill priorities file for Pipewire
+  ansible.builtin.blockinfile:
+    path: /etc/apt/preferences.d/backports-pipewire
+    block: |
+      # Pipewire
+      Package: pipewire pipewire-bin libpipewire
+      Pin: release n=bookworm-backports
+      Pin-Priority: 600
+  when:
+    - pipewire == true
+
+- name: Update APT cache
+  ansible.builtin.apt:
+    update_cache: true

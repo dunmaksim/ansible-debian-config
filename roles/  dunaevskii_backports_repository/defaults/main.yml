@@ -1,0 +1,7 @@
+---
+######### Переменные роли dunaevskii.backports ########
+curl: false
+emacs: false
+gthumb: false
+mc: false
+pipewire: false

@@ -6,12 +6,12 @@ readme: README.md
 authors:
   - Maxim Dunaevskii (dunmaksim@yandex.ru)
 description: Ansible Collection for faster configuration Debian Linux
-license_file: COPYING
+license_file: LICENSE
 tags:
   - linux
   - debian
-dependencies:
+dependencies: {}
 repository: https://github.com/dunmaksim/ansible-debian-config
-documentation:
+documentation: https://github.com/dunmkaism/ansible-debian-config
 homepage: https://dunaevsky-ms.ru/
 issues: https://github.com/dunmaksim/ansible-debian-config
