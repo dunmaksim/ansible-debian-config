@@ -10,3 +10,5 @@
         pkg:
           - thunderbird
           - thunderbird-l10n-ru
+      when:
+        - ansible_facts['distribution'] == "Debian"- 

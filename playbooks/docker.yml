@@ -15,6 +15,9 @@
         - docker-engine
         - docker.io
         - runc
+      when:
+        - ansible_facts['distribution'] == "Debian"
+
 
     - name: Register Docker APT repository
       ansible.builtin.deb822_repository:
@@ -25,6 +28,8 @@
         components: stable
         signed_by: https://download.docker.com/linux/debian/gpg
         state: present
+      when:
+        - ansible_facts['distribution'] == "Debian"
 
     - name: Install Docker packages
       ansible.builtin.apt:
@@ -35,3 +40,5 @@
           docker-ce-cli
           docker-compose-plugin
         update_cache: true
+      when:
+        - ansible_facts['distribution'] == "Debian"

@@ -1,5 +1,7 @@
 -r REQUIREMENTS
 
+autotools-language-server
+
 ansible-lint
 molecule
 yamllint

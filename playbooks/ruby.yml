@@ -9,6 +9,9 @@
         update_cache: true
         pkg:
           - ruby
+      when:
+        - ansible_facts['distribution'] == "Debian"
+
     - name: Install development files for building native Ruby extensions
       ansible.builtin.apt:
         update_cache: false
@@ -18,3 +21,5 @@
           - libssl-dev
           - libyaml-dev
           - ruby-dev
+      when:
+        - ansible_facts['distribution'] == "Debian"

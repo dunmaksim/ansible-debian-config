@@ -1,0 +1,44 @@
+---
+# Установка Emacs из Debian Backports
+- name: Install GNU Emacs from Debian Backports
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Register Debian Backports repository
+      ansible.builtin.deb822_repository:
+        name: debian-backports
+        types: deb
+        uris: https://deb.debian.org/debian
+        suites: "{{ ansible_distribution_release }}-backports"
+        components:
+          - main
+          - non-free
+          - contrib
+        state: present
+      when:
+        - ansible_facts['distribution'] == "Debian"
+
+    - name: Update APT cache
+      ansible.builtin.apt:
+        update_cache: true
+      when:
+        - ansible_facts['distribution'] == "Debian"
+
+    - name: Pin Emacs packages to Debian Backports
+      ansible.builtin.template:
+        src: ./templates/99-emacs-backports.j2
+        dest: /etc/apt/preferences.d/99-emacs-backports
+        owner: root
+        group: root
+        mode: u=rw,g=r,u=r
+      when:
+        - ansible_facts['distribution'] == "Debian"
+
+    - name: Install GNU Emacs
+      ansible.builtin.apt:
+        update_cache: true
+        pkg:
+          - emacs
+      when:
+        - ansible_facts['distribution'] == "Debian"- 

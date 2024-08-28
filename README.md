@@ -111,3 +111,16 @@
 * [yandex-browser.yml](./playbooks/yandex-browser.yml)
 
     Установка стабильной версии [Yandex Browser](https://browser.yandex.ru) из официального репозитория.
+
+
+## Тестирование
+
+Для запуска тестов понадобятся:
+
+* [tox](https://tox.wiki/en/latest/index.html)
+* [Vagrant](https://www.vagrantup.com/)
+* [VirtualBox](https://www.virtualbox.org/)
+
+Все тесты выполняются последовательно.
+
+Для каждого теста создаётся отдельная виртуальная машина с Debian Linux. Это позволяет быть уверенным в том, что плейбук отработает как надо в новом окружении.

@@ -13,9 +13,13 @@
         components: main
         signed_by: https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
         state: present
+      when:
+        - ansible_facts['distribution'] == "Debian"
 
     - name: Install NodeJS package
       ansible.builtin.apt:
         name: nodejs
         state: present
         update_cache: true
+      when:
+        - ansible_facts['distribution'] == "Debian"
