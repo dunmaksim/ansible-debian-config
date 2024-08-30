@@ -1,10 +1,11 @@
 ---
 galaxy_info:
-  role_name: "dunaevskii.debian.backports"
+  min_ansible_version: "2.15.10"
+  license: GNU GPLv3
+  role_name: backports
   company: Maxim Dunaevskii
   author: Maxim Dunaevskii
   description: Role for setup Debian Backports repository
-  min_ansible_versions: 2.10.0
   platforms:
     - name: Debian
       versions:

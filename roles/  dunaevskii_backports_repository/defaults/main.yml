@@ -1,7 +1,7 @@
 ---
 ######### Переменные роли dunaevskii.backports ########
-curl: false
-emacs: false
-gthumb: false
-mc: false
-pipewire: false
+debian_config_backports_curl: false
+debian_config_backports_emacs: false
+debian_config_backports_gthumb: false
+debian_config_backports_mc: false
+debian_config_backports_pipewire: false

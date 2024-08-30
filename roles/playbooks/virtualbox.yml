@@ -13,8 +13,6 @@
         components: contrib
         signed_by: https://www.virtualbox.org/download/oracle_vbox_2016.asc
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Install required packages
       ansible.builtin.apt:
@@ -25,5 +23,3 @@
           - "linux-headers-{{ ansible_kernel }}"
           - virtualbox-7.0
         update_cache: true
-      when:
-        - ansible_facts['distribution'] == "Debian"

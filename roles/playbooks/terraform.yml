@@ -13,8 +13,6 @@
           https://hashicorp-releases.yandexcloud.net/terraform/
           {{ version }}
           /terraform_{{ version }}_linux_{{ ansible_architecture }}.zip
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Install Terraform DEB package
       ansible.builtin.apt:
@@ -22,5 +20,3 @@
         name: terraform
         state: present
         update_cache: true
-      when:
-        - ansible_facts['distribution'] == "Debian"

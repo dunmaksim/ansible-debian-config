@@ -16,14 +16,10 @@
           - non-free
           - contrib
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Update APT cache
       ansible.builtin.apt:
         update_cache: true
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Pin Emacs packages to Debian Backports
       ansible.builtin.template:
@@ -32,13 +28,9 @@
         owner: root
         group: root
         mode: u=rw,g=r,u=r
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Install GNU Emacs
       ansible.builtin.apt:
         update_cache: true
         pkg:
           - emacs
-      when:
-        - ansible_facts['distribution'] == "Debian"- 

@@ -17,13 +17,9 @@
         components: "debian-{{ ansible_distribution_release }}"
         signed_by: https://ose-repo.syslog-ng.com/apt/syslog-ng-ose-pub.asc
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Install syslog-ng package
       ansible.builtin.apt:
         name: syslog-ng
         state: present
         update_cache: true
-      when:
-        - ansible_facts['distribution'] == "Debian"

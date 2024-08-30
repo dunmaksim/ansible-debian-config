@@ -13,13 +13,9 @@
         components: main
         signed_by: https://packages.microsoft.com/keys/microsoft.asc
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Install required packages
       ansible.builtin.apt:
         pkg: code
         state: present
         update_cache: true
-      when:
-        - ansible_facts['distribution'] == "Debian"

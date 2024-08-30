@@ -10,8 +10,6 @@
         deb: |
           https://www.deb-multimedia.org/pool/main/d/
           deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
-      when:
-        - ansible_facts['distribution'] == "Debian"
 
     - name: Register Debian Multimedia repository
       ansible.builtin.deb822_repository:
@@ -23,5 +21,3 @@
           - main
           - non-free
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"

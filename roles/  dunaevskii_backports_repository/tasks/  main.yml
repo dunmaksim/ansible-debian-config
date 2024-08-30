@@ -1,5 +1,5 @@
 ---
-- name: Register Backports Repository
+- name: Register Debian backports repository
   ansible.builtin.deb822_repository:
     name: debian-backports
     types: deb
@@ -20,8 +20,7 @@
     group: root
     state: file
     mode: '0644'
-  when:
-    - curl == true
+  when: debian_config_backports_curl | bool
 
 - name: Fill priorities file for cURL
   ansible.builtin.blockinfile:
@@ -31,8 +30,7 @@
       Package: curl libcurl3-gnutls libcurl4
       Pin: release n=bookworm-backports
       Pin-Priority: 600
-  when:
-    - curl == true
+  when: debian_config_backports_curl | bool
 
 
 # GNU Emacs
@@ -43,8 +41,7 @@
     group: root
     state: file
     mode: '0644'
-  when:
-    - emacs == true
+  when: debian_config_backports_emacs | bool
 
 - name: Fill priorities file for GNU Emacs
   ansible.builtin.blockinfile:
@@ -54,8 +51,7 @@
       Package: emacs-gtk emacs-nox emacs emacs-bin-common emacs-common emacs-el
       Pin: release n=bookworm-backports
       Pin-Priority: 600
-  when:
-    - emacs == true
+  when: debian_config_backports_emacs | bool
 
 
 # gThumb
@@ -66,8 +62,7 @@
     group: root
     state: file
     mode: '0644'
-  when:
-    - gthumb == true
+  when: debian_config_backports_gthumb | bool
 
 - name: Fill priorities file for gThumb
   ansible.builtin.blockinfile:
@@ -77,8 +72,7 @@
       Package: gthumb gthumb-data
       Pin: release n=bookworm-backports
       Pin-Priority: 600
-  when:
-    - gthumb == true
+  when: debian_config_backports_gthumb | bool
 
 
 # Midnight Commander
@@ -89,8 +83,7 @@
     group: root
     state: file
     mode: '0644'
-  when:
-    - mc == true
+  when: debian_config_backports_mc | bool
 
 - name: Fill priorities file for Midnight Commander
   ansible.builtin.blockinfile:
@@ -100,8 +93,7 @@
       Package: mc mc-data
       Pin: release n=bookworm-backports
       Pin-Priority: 600
-  when:
-    - mc == true
+  when: debian_config_backports_mc | bool
 
 
 # Pipewire
@@ -112,8 +104,7 @@
     group: root
     state: file
     mode: '0644'
-  when:
-    - pipewire == true
+  when: debian_config_backports_pipewire | bool
 
 - name: Fill priorities file for Pipewire
   ansible.builtin.blockinfile:
@@ -123,8 +114,7 @@
       Package: pipewire pipewire-bin libpipewire
       Pin: release n=bookworm-backports
       Pin-Priority: 600
-  when:
-    - pipewire == true
+  when: debian_config_backports_pipewire | bool
 
 - name: Update APT cache
   ansible.builtin.apt:

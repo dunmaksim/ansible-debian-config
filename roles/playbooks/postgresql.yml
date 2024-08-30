@@ -13,5 +13,3 @@
         components: main
         signed_by: https://www.postgresql.org/media/keys/ACCC4CF8.asc
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"

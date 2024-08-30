@@ -12,9 +12,6 @@
           https://hashicorp-releases.yandexcloud.net/vagrant/
           {{ version }}/vagrant_{{ version }}-1_{{ ansible_architecture }}.deb
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"
-        - use_hashicopr_repo == false
 
 
     - name: Register HashiCorp official APT repository
@@ -26,15 +23,10 @@
         components: main
         signed_by: https://apt.releases.hashicorp.com/gpg
         state: present
-      when:
-        - ansible_facts['distribution'] == "Debian"
-        - use_hashicopr_repo == true
+
 
     - name: Install Vagrant from HashiCorp official APT repository
       ansible.builtin.apt:
         pkg: vagrant
         state: present
         update_cache: true
-      when:
-        - ansible_facts['distribution'] == "Debian"
-        - use_hashicorp_repo == true
