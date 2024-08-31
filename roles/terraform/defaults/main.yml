@@ -1,0 +1,3 @@
+---
+terraform_use_official_repo: false
+terraform_version: "1.9.5"
