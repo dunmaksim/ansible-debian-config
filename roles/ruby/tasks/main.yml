@@ -1,0 +1,11 @@
+---
+- name: Install Ruby packages and headers
+  ansible.builtin.apt:
+    update_cache: true
+    pkg:
+      - ruby
+      - libedit-dev
+      - libffi-dev
+      - libssl-dev
+      - libyaml-dev
+      - ruby-dev

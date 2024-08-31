@@ -1,0 +1,16 @@
+---
+- name: Register Mattermost APT repository
+  ansible.builtin.deb822_repository:
+    name: mattermost
+    types: deb
+    uris: https://deb.packages.mattermost.com
+    suites: stable
+    components: main
+    signed_by: https://deb.packages.mattermost.com/pubkey.gpg
+    state: present
+
+- name: Install Mattermost Desktop package
+  ansible.builtin.apt:
+    name: mattermost-desktop
+    state: present
+    update_cache: true

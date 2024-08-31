@@ -1,0 +1,35 @@
+---
+- name: Download ZIP with Terraform DEB
+  ansible.builtin.unarchive:
+    dest: /tmp
+    src: >-
+      https://hashicorp-releases.yandexcloud.net/terraform/
+      {{ terraform_version }}
+      /terraform_{{ terraform_version }}_linux_{{ ansible_architecture }}.zip
+  when: not terraform_use_official_repo | bool
+
+- name: Install Terraform DEB package from mirror
+  ansible.builtin.apt:
+    deb: "/tmp/terraform_{{ terraform_version }}_linux_{{ ansible_architecture }}.deb"
+    name: terraform
+    state: present
+    update_cache: false
+  when: not terraform_use_official_repo | bool
+
+- name: Register HashiCorp official APT repository
+  ansible.builtin.deb822_repository:
+    name: hashicorp
+    types: deb
+    uris: https://apt.releases.hashicorp.com
+    suites: "{{ ansible_distribution_release }}"
+    components: main
+    signed_by: https://apt.releases.hashicorp.com/gpg
+    state: present
+  when: terraform_use_official_repo | bool
+
+- name: Install Terraform from official repository
+  ansible.builtin.apt:
+    name: terraform
+    state: present
+    update_cache: true
+  when: terraform_use_official_repo | bool

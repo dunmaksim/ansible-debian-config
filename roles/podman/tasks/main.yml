@@ -1,0 +1,26 @@
+---
+- name: Install Podman package
+  ansible.builtin.apt:
+    pkg:
+      podman
+    update_cache: true
+
+- name: Create /etc/container/container.conf file
+  ansible.builtin.file:
+    path: /etc/containers/containers.conf
+    owner: root
+    group: root
+    mode: '0644'
+    state: file
+
+- name: Fill /etc/container/container.conf file
+  ansible.builtin.blockinfile:
+    path: /etc/containers/containers.conf
+    block: |
+      [storage]
+      driver = "overlay"
+
+- name: Restart Podman service
+  ansible.builtin.systemd_service:
+    name: podman
+    state: restarted
