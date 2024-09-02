@@ -1,4 +1,4 @@
-# Роль `dunaevskii.debian.backports`
+# Роль `dunaevskii.backports`
 
 Роль для подключения и использования репозитория [Debian Backports](https://backports.debian.org).
 
