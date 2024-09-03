@@ -36,25 +36,25 @@
 
 ### Роли
 
-| Название                                                     | Описание                                                               |
-|--------------------------------------------------------------|------------------------------------------------------------------------|
-| [dunaevskii.debian.backports](./roles/backports/README.md)   | Подключение репозитория Debian Backports                               |
-| [dunaevskii.debian.docker](./roles/docker/README.md)         | Установка Docker из официального репозитория                           |
-| [dunaevskii.debian.firefox](./roles/firefox/README.md)       | Установка Firefox из репозитория Mozilla                               |
-| [dunaevskii.debian.hashicorp](./roles/hashicorp/README.md)   | Подключение репозитория HashiCorp                                      |
-| [dunaevskii.debian.kvm](./roles/kvm/README.md)               | Установка QEMU-KVM и libvirt                                           |
-| [dunaevskii.debian.mattermost](./roles/mattermost/README.md) | Установка Mattermst Desktop из официального репозитория                |
-| [dunaevskii.debian.multimedia](./roles/multimedia/README.md) | Подключение репозитория Debian Multimedia                              |
-| [dunaevskii.debian.nodejs](./roles/nodejs/README.md)         | Установка NodeJS из официального репозитория                           |
-| [dunaevskii.debian.opentofu](./roles/opentofu/README.md)     | Установка OpenTofu из официального репозитория                         |
-| [dunaevskii.debian.podman](./roles/podman/README.md)         | Установка и настройка Podman                                           |
-| [dunaevskii.debian.postgresql](./roles/postgresql/README.md) | Подключение официального репозитория PostgreSQL                        |
-| [dunaevskii.debian.ruby](./roles/ruby/README.md)             | Установка Ruby                                                         |
-| [dunaevskii.debian.terraform](./roles/terraform/README.md)   | Установка Terraform из репозитория HashiCorp или его зеркала           |
-| [dunaevskii.debian.vagrant](./roles/vagrant/README.md)       | Установка Vagrant из репозитория HashiCorp или его зеркала             |
-| [dunaevskii.debian.virtualbox](./roles/virtualbox/README.md) | Установка Oracle VirtualBox из официального репозитория                |
-| [dunaevskii.debian.vscode](./roles/vscode/README.md)         | Установка Microsoft Visual Studio Code из официального репозитория     |
-| [dunaevskii.debian.yandex_browser](./roles/yandex/README.md) | Установка стабильной версии Yandex Browser из официального репозитория |
+| Название                                          | Описание                                                               |
+|---------------------------------------------------|------------------------------------------------------------------------|
+| [debian.backports](./roles/backports/README.md)   | Подключение репозитория Debian Backports                               |
+| [debian.docker](./roles/docker/README.md)         | Установка Docker из официального репозитория                           |
+| [debian.firefox](./roles/firefox/README.md)       | Установка Firefox из репозитория Mozilla                               |
+| [debian.hashicorp](./roles/hashicorp/README.md)   | Подключение репозитория HashiCorp                                      |
+| [debian.kvm](./roles/kvm/README.md)               | Установка QEMU-KVM и libvirt                                           |
+| [debian.mattermost](./roles/mattermost/README.md) | Установка Mattermst Desktop из официального репозитория                |
+| [debian.multimedia](./roles/multimedia/README.md) | Подключение репозитория Debian Multimedia                              |
+| [debian.nodejs](./roles/nodejs/README.md)         | Установка NodeJS из официального репозитория                           |
+| [debian.opentofu](./roles/opentofu/README.md)     | Установка OpenTofu из официального репозитория                         |
+| [debian.podman](./roles/podman/README.md)         | Установка и настройка Podman                                           |
+| [debian.postgresql](./roles/postgresql/README.md) | Подключение официального репозитория PostgreSQL                        |
+| [debian.ruby](./roles/ruby/README.md)             | Установка Ruby                                                         |
+| [debian.terraform](./roles/terraform/README.md)   | Установка Terraform из репозитория HashiCorp или его зеркала           |
+| [debian.vagrant](./roles/vagrant/README.md)       | Установка Vagrant из репозитория HashiCorp или его зеркала             |
+| [debian.virtualbox](./roles/virtualbox/README.md) | Установка Oracle VirtualBox из официального репозитория                |
+| [debian.vscode](./roles/vscode/README.md)         | Установка Microsoft Visual Studio Code из официального репозитория     |
+| [debian.yandex_browser](./roles/yandex/README.md) | Установка стабильной версии Yandex Browser из официального репозитория |
 
 ## Установка и использование
 
