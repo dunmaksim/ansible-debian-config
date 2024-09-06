@@ -38,6 +38,3 @@
     pkg:
       - firefox
     state: present
-
-- name: Install locales
-  ansible.builtin.apt:

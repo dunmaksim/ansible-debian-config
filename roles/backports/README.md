@@ -18,7 +18,7 @@ Debian Bookworm
 
 ## Информация об авторе
 
-dunmaksim@yandex.ru
+[dunmaksim@yandex.ru](mailto:dunmaksim@yandex.ru)
 
 ## Лицензия
 
