@@ -17,5 +17,5 @@
       - build-essential
       - "linux-headers-{{ ansible_kernel }}"
       - make
-      - virtualbox-7.0
+      - "virtualbox-{{ virtualbox_version }}"
     update_cache: true
