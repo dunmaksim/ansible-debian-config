@@ -1,0 +1,47 @@
+---
+- name: Register Debian backports repository
+  ansible.builtin.deb822_repository:
+    name: debian-backports
+    types: deb
+    uris: https://deb.debian.org/debian
+    suites: bookworm-backports
+    components:
+      - main
+      - non-free
+      - contrib
+    state: present
+
+# GNU Emacs
+- name: Create priorities file for GNU Emacs
+  ansible.builtin.file:
+    path: /etc/apt/preferences.d/backports-emacs
+    owner: root
+    group: root
+    state: file
+    mode: '0644'
+
+- name: Fill priorities file for GNU Emacs
+  ansible.builtin.blockinfile:
+    path: /etc/apt/preferences.d/backports-emacs
+    block: |
+      # GNU Emacs
+      Package: emacs-gtk emacs-nox emacs emacs-bin-common emacs-common emacs-el
+      Pin: release n=bookworm-backports
+      Pin-Priority: 600
+
+- name: Export PGP key for org-mode packages
+  ansible.builtin.command:
+    argv:
+      - gpg2
+      - --keyserver
+      - keyserver.ubuntu.org
+      - --recv-keys
+      - 0327BE68D64D9A1A66859F15645357D2883A0966
+
+- name: Install GNU Emacs packages and required system libraries
+  ansible.builtin.apt:
+    pkg:
+      emacs
+      git
+      libenchant2-dev
+      gpg2

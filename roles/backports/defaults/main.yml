@@ -1,8 +1,13 @@
 ---
-######### Переменные роли dunaevskii.backports ########
+# Переменные роли debian.backports
 backports_curl: false
 backports_emacs: false
+backports_grub: false
 backports_gthumb: false
+backports_ibus: false
+backports_libreoffice: false
+backports_linux_image: false
 backports_mc: false
 backports_pipewire: false
+backports_quemu: false
 backports_systemd: false
